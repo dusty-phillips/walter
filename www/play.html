@@ -1,0 +1,8 @@
+import mpd
+^L
+client = mpd.MPDClient()
+client.connect("localhost", 6600)
+client.password(request.cookie.get("auth_pwd").value)
+client.pause()
+^L
+Played!

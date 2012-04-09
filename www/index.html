@@ -1,0 +1,31 @@
+import aspen
+^L
+response = aspen.Response()
+if request.POST:
+    auth_pwd = request.body.one("auth_pwd")
+    response.cookie['auth_pwd'] = auth_pwd
+else:
+    auth_pwd = request.cookie.get("auth_pwd")
+
+^L
+<!DOCTYPE html>
+<html{% block cache_manifest %}{% end %}>
+<head>
+    <title>Welcome to Walter</title>
+    <link rel="stylesheet" type="text/css" href="walter.css" />
+    <script type="text/javascript" src="/js/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="/js/py-builtins.js"></script>
+    <script type="text/javascript" src="/js/walter.js"></script>
+</head>
+<body>
+    {% if not auth_pwd %}
+    <form method="post">
+        Enter your mpd password: <input type="passwd" name="auth_pwd" />
+        <input type="submit" value="Save" />
+    </form>
+    {% else %}
+        <div class="play button">play</div>
+
+    {% end %}
+</body>
+</html>
