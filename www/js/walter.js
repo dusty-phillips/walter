@@ -4,46 +4,74 @@ Player.PY$play = function() {
     var __kwargs = __kwargs_get(arguments);
     var __varargs = __varargs_get(arguments);
     var $v1 = Array.prototype.slice.call(arguments).concat(js(__varargs));
-    post(str('/play.html'), dict([str('some'), str('arg')]));
+    post(str('/play.html'), dict([str('some'), str('arg')]), self.PY$__getattr__('update_status'));
+return None;
+};
+Player.PY$update_status = function() {
+    var self = this;
+    var __kwargs = __kwargs_get(arguments);
+    var __varargs = __varargs_get(arguments);
+    var $v2 = Array.prototype.slice.call(arguments).concat(js(__varargs));
+    var text = ('text' in __kwargs) ? __kwargs['text'] : $v2[0];
+    delete __kwargs.text
+    if (text === undefined) { 
+__builtins__.PY$print('Player.update_status() did not get parameter text'); }; 
+    text = py(text);
+    html(str('#status'), text);
 return None;
 };
 var player = Player();
 var setup = function() {
     var __kwargs = __kwargs_get(arguments);
     var __varargs = __varargs_get(arguments);
-    var $v2 = Array.prototype.slice.call(arguments).concat(js(__varargs));
+    var $v3 = Array.prototype.slice.call(arguments).concat(js(__varargs));
     click(str('.play'), player.PY$__getattr__('play'));
 return None;
 }
 var click = function() {
     var __kwargs = __kwargs_get(arguments);
     var __varargs = __varargs_get(arguments);
-    var $v3 = Array.prototype.slice.call(arguments).concat(js(__varargs));
-    var selector = ('selector' in __kwargs) ? __kwargs['selector'] : $v3[0];
+    var $v4 = Array.prototype.slice.call(arguments).concat(js(__varargs));
+    var selector = ('selector' in __kwargs) ? __kwargs['selector'] : $v4[0];
     delete __kwargs.selector
     if (selector === undefined) { 
 __builtins__.PY$print('click() did not get parameter selector'); }; 
-    var func = ('func' in __kwargs) ? __kwargs['func'] : $v3[1];
+    var func = ('func' in __kwargs) ? __kwargs['func'] : $v4[1];
     delete __kwargs.func
     if (func === undefined) { 
 __builtins__.PY$print('click() did not get parameter func'); }; 
     jQuery(js(selector)).click(js(func));
 return None;
 }
+var html = function() {
+    var __kwargs = __kwargs_get(arguments);
+    var __varargs = __varargs_get(arguments);
+    var $v5 = Array.prototype.slice.call(arguments).concat(js(__varargs));
+    var selector = ('selector' in __kwargs) ? __kwargs['selector'] : $v5[0];
+    delete __kwargs.selector
+    if (selector === undefined) { 
+__builtins__.PY$print('html() did not get parameter selector'); }; 
+    var text = ('text' in __kwargs) ? __kwargs['text'] : $v5[1];
+    delete __kwargs.text
+    if (text === undefined) { 
+__builtins__.PY$print('html() did not get parameter text'); }; 
+    jQuery(js(selector)).html(js(text));
+return None;
+}
 var post = function() {
     var __kwargs = __kwargs_get(arguments);
     var __varargs = __varargs_get(arguments);
-    var $v4 = Array.prototype.slice.call(arguments).concat(js(__varargs));
-    var url = ('url' in __kwargs) ? __kwargs['url'] : $v4[0];
+    var $v6 = Array.prototype.slice.call(arguments).concat(js(__varargs));
+    var url = ('url' in __kwargs) ? __kwargs['url'] : $v6[0];
     delete __kwargs.url
     if (url === undefined) { 
 __builtins__.PY$print('post() did not get parameter url'); }; 
-    var params = $v4[1];
+    var params = $v6[1];
     if (params === undefined) { params = __kwargs.params === undefined ? dict([]) : __kwargs.params; };
     delete __kwargs.params
     if (params === undefined) { 
 __builtins__.PY$print('post() did not get parameter params'); }; 
-    var func = $v4[2];
+    var func = $v6[2];
     if (func === undefined) { func = __kwargs.func === undefined ? __builtins__.PY$None : __kwargs.func; };
     delete __kwargs.func
     if (func === undefined) { 
