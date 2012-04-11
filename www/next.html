@@ -1,0 +1,7 @@
+import mpdclient
+^L
+client = mpdclient.get_client(request)
+client.next()
+status = mpdclient.get_status_line(client)
+^L
+{{status}}
